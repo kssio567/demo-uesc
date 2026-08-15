@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "palavra": "maçã",
+        "definição": "Fruta redonda e doce, geralmente vermelha ou verde.",
+        "linha": 3,
+        "coluna": 3,
+        "direcao": "horizontal"
+    },
+    {
+        "id": 2,
+        "palavra": "arroz",
+        "definição": "Grão básico da alimentação, muito utilizado em pratos.",
+        "linha": 1,
+        "coluna": 8,
+        "direcao": "vertical"
+    },
+    {
+        "id": 3,
+        "palavra": "leite",
+        "definição": "Bebida branca e nutritiva, proveniente de vacas.",
+        "linha": 6,
+        "coluna": 1,
+        "direcao": "horizontal"
+    },
+    {
+        "id": 4,
+        "palavra": "pão",
+        "definição": "Alimento feito de farinha, água e fermento, muito comum.",
+        "linha": 2,
+        "coluna": 6,
+        "direcao": "vertical"
+    },
+    {
+        "id": 5,
+        "palavra": "batata",
+        "definição": "Tubérculo comestível, muito utilizado em diversas receitas.",
+        "linha": 2,
+        "coluna": 4,
+        "direcao": "vertical"
+    },
+    {
+        "id": 6,
+        "palavra": "ovo",
+        "definição": "Alimento rico em proteínas, geralmente de galinha.",
+        "linha": 4,
+        "coluna": 6,
+        "direcao": "horizontal"
+    },
+    {
+        "id": 7,
+        "palavra": "carne",
+        "definição": "Alimento proveniente de animais, consumido em diversas formas.",
+        "linha": 1,
+        "coluna": 7,
+        "direcao": "horizontal"
+    },
+    {
+        "id": 8,
+        "palavra": "salada",
+        "definição": "Mistura de vegetais frescos, frequentemente servida crua.",
+        "linha": 4,
+        "coluna": 1,
+        "direcao": "vertical"
+    }
+]

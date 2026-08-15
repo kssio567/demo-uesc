@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #ffffff;
+
+    font-family: Arial, sans-serif;
+}
+
+.jogo {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+    gap: 24px;
+
+    max-width: 1000px;
+}
+
+h1 {
+    margin: 0;
+    grid-column: 1 / -1;
+    text-align: center;
+
+    font-size: 28px;
+    color: #1f2937;
+}
+
+.tabuleiro {
+    display: grid;
+    grid-column: 2;
+    grid-row: 2;
+
+    grid-template-columns: repeat(11, 70px);
+    grid-template-rows: repeat(9, 70px);
+
+    gap: 1px;
+}
+
+/*
+    Cada casa real da cruzadinha.
+*/
+.celula {
+    position: relative;
+
+    width: 70px;
+    height: 70px;
+
+    background: #ffffff;
+
+    border: 1px solid #555;
+}
+
+/*
+    Número da questão.
+*/
+.numero {
+    position: absolute;
+
+    top: 4px;
+    left: 6px;
+
+    z-index: 2;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: #111827;
+
+    pointer-events: none;
+}
+
+/*
+    Campo onde o jogador digita.
+*/
+.celula input {
+    width: 100%;
+    height: 100%;
+
+    padding: 12px 4px 2px;
+
+    border: 0;
+    outline: none;
+
+    background: transparent;
+
+    text-align: center;
+
+    font-size: 30px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    color: #1f2937;
+}
+
+/*
+    Destaque quando a casa está selecionada.
+*/
+.celula:focus-within {
+    background: #dbeafe;
+    border-color: #2563eb;
+}
+
+/*
+    Quando o usuário passa o mouse.
+*/
+.celula:hover {
+    background: #f1f5f9;
+}
+
+.celula:focus-within:hover {
+    background: #dbeafe;
+}
+
+button {
+    display: none;
+}
+
+
+.celula input.correta {
+    color: #15803d;
+}
+
+.celula input.incorreta {
+    color: #dc2626;
+}
+
+.dicas{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    grid-column: 1;
+    grid-row: 2;
+    
+    padding-right: 20px;
+    border-right: 2px solid #e5e7eb;
+}
+
+.dicas p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #374151;
+}
