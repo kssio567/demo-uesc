@@ -1,6 +1,7 @@
 const inputs = Array.from(document.querySelectorAll('.celula input'));
 const botaoVerificar = document.getElementById('verificar');
 const resultado = document.getElementById('resultado');
+let jogoConcluido = false;
 
 // Normalizar texto
 function normalizarTexto(texto) {
@@ -87,11 +88,20 @@ function conferirRespostas() {
     if (quantidadeErros === 0) {
         resultado.textContent = '🎉 Parabéns! Você completou a cruzadinha!';
         resultado.className = 'resultado--sucesso';
+        
+        if(!jogoConcluido){
+            // conclui o jogo e tem confetes por 2s
+            jogoConcluido = true;
+            confetti.start(2000);
+        }
         return;
     }
     // Com erro
     resultado.textContent = `Ainda existem ${quantidadeErros} resposta(s) incorreta(s).`;
     resultado.className = 'resultado--erro';
+    // Garante que os confetes estejam parados
+    jogoConcluido = false;
+    confetti.stop();
 
 }
 
