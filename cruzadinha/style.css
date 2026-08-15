@@ -3,41 +3,56 @@
 }
 
 
+/* ================================= */
+/* BODY                              */
+/* ================================= */
+
 body {
     margin: 0;
-
     min-height: 100vh;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+    padding: 2rem 1rem;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
 
     background: linear-gradient(
         135deg,
-        #666fda 0%,
+        #6d79f8 5%,
         #7452a8 100%
     );
-
-    font-family: Arial, sans-serif;
 }
 
 
 /* ================================= */
-/* ESTRUTURA DO JOGO                 */
+/* JOGO - DESKTOP                    */
 /* ================================= */
 
 .jogo {
+    width: 100%;
+    max-width: 1100px;
+
     display: grid;
 
-    grid-template-columns: 300px 682px;
+    grid-template-columns: 300px 1fr;
+
     grid-template-rows: auto auto auto;
 
     align-items: start;
 
-    column-gap: 40px;
-    row-gap: 24px;
-
-    max-width: 1100px;
+    column-gap: 2rem;
+    row-gap: 1rem;
 }
 
 
@@ -52,9 +67,9 @@ h1 {
 
     text-align: center;
 
-    font-size: 28px;
+    font-size: clamp(2rem, 3vw, 3rem);
 
-    color: #172033;
+    color: white;
 }
 
 
@@ -64,39 +79,34 @@ h1 {
 
 .dicas {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
 
     display: flex;
     flex-direction: column;
 
-    gap: 12px;
+    gap: 0.8rem;
 
-    padding: 18px 16px;
+    padding: 1rem;
 
-    background: #ffffff;
+    background-color: white;
 
-    border: 1px solid #ffffff;
+    border: 1px solid white;
 
-    border-radius: 8px;
+    border-radius: 0.5rem;
 
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.10);
+        0 4px 1rem rgba(0, 0, 0, 0.10);
 }
 
 
 .dicas p {
     margin: 0;
 
-    font-size: 14px;
+    font-size: 0.875rem;
 
     line-height: 1.45;
 
     color: #374151;
-}
-
-
-.dicas strong {
-    color: #111827;
 }
 
 
@@ -106,34 +116,49 @@ h1 {
 
 .tabuleiro {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
+
+    /*
+     * O tabuleiro nunca ultrapassa
+     * a largura disponível.
+     *
+     * No desktop ele pode chegar a 44rem.
+     */
+    width: min(44rem, 100%);
+
+    /*
+     * Mantém a proporção:
+     *
+     * 11 colunas
+     * 9 linhas
+     */
+    aspect-ratio: 11 / 9;
 
     display: grid;
 
-    grid-template-columns: repeat(11, 62px);
-    grid-template-rows: repeat(9, 62px);
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(9, 1fr);
 
-    gap: 1px;
+    gap: 0.1rem;
 }
 
 
 /* ================================= */
-/* CÉLULA                            */
+/* CÉLULAS                           */
 /* ================================= */
 
 .celula {
     position: relative;
 
-    width: 62px;
-    height: 62px;
+    width: 100%;
+    height: 100%;
 
-    background: #ffffff;
+    background-color: white;
 
-    border: 1px solid #555555;
+    border: 1px solid #ccc;
 
     transition:
-        background 0.15s ease,
-        border-color 0.15s ease;
+        background-color 0.3s ease;
 }
 
 
@@ -144,15 +169,18 @@ h1 {
 .numero {
     position: absolute;
 
-    top: 3px;
-    left: 5px;
+    top: 0.1rem;
+    left: 0.1rem;
+
+    font-size: clamp(
+        0.65rem,
+        1.3vw,
+        1rem
+    );
+
+    color: #161616;
 
     z-index: 2;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    color: #111827;
 
     pointer-events: none;
 }
@@ -163,10 +191,17 @@ h1 {
 /* ================================= */
 
 .celula input {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100%;
 
-    padding: 10px 3px 0;
+    padding: 0;
+
+    text-transform: uppercase;
 
     border: none;
     outline: none;
@@ -175,14 +210,13 @@ h1 {
 
     text-align: center;
 
-    font-size: 29px;
+    font-size: clamp(
+        1rem,
+        2.2vw,
+        1.5rem
+    );
+
     font-weight: 500;
-
-    text-transform: uppercase;
-
-    color: #1f2937;
-
-    caret-color: #2563eb;
 }
 
 
@@ -191,19 +225,17 @@ h1 {
 /* ================================= */
 
 .celula:focus-within {
-    background: #dbeafe;
-
-    border-color: #2563eb;
+    background-color: white;
 }
 
 
 .celula:hover {
-    background: #f8fafc;
+    background: white;
 }
 
 
 .celula:focus-within:hover {
-    background: #dbeafe;
+    background: white;
 }
 
 
@@ -212,17 +244,13 @@ h1 {
 /* ================================= */
 
 .controles {
-    grid-column: 2;
-    grid-row: 3;
-
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
 
-    gap: 10px;
-
-    min-height: 55px;
+    min-height: 3rem;
 }
 
 
@@ -233,16 +261,18 @@ h1 {
 #verificar {
     display: none;
 
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
 
     border: none;
-    border-radius: 8px;
 
-    background: #2563eb;
+    border-radius: 0.5rem;
+
+    background: #7452a8;
 
     color: #ffffff;
 
-    font-size: 16px;
+    font-size: 1rem;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -259,7 +289,7 @@ h1 {
 
 
 #verificar:hover {
-    background: #1d4ed8;
+    background: #6d79f8;
 }
 
 
@@ -279,8 +309,15 @@ h1 {
 
     text-align: center;
 
-    font-size: 16px;
+    font-size: clamp(
+        1rem,
+        2vw,
+        1.4rem
+    );
+
     font-weight: bold;
+
+    color: white;
 }
 
 
@@ -309,4 +346,244 @@ h1 {
     color: #dc2626;
 
     font-weight: 700;
+}
+
+
+/* ========================================================= */
+/* ========================================================= */
+/*                                                           */
+/*              TELAS MÉDIAS / TABLETS                      */
+/*                                                           */
+/* ========================================================= */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        align-items: flex-start;
+
+        padding: 1.5rem 1rem;
+    }
+
+
+    .jogo {
+        max-width: 700px;
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            auto
+            auto
+            auto
+            auto;
+
+        column-gap: 0;
+
+        row-gap: 1rem;
+    }
+
+
+    /* ============================= */
+    /* TÍTULO                        */
+    /* ============================= */
+
+    h1 {
+        grid-column: 1;
+
+        grid-row: 1;
+
+        font-size: clamp(
+            2rem,
+            6vw,
+            2.5rem
+        );
+    }
+
+
+    /* ============================= */
+    /* DICAS                         */
+    /* ============================= */
+
+    .dicas {
+        grid-column: 1;
+
+        grid-row: 2;
+
+        width: 100%;
+
+        padding: 1rem;
+    }
+
+
+    /* ============================= */
+    /* RESULTADO                     */
+    /* ============================= */
+
+    #resultado {
+        grid-column: 1;
+
+        grid-row: 3;
+
+        min-height: 24px;
+
+        font-size: clamp(
+            1rem,
+            4vw,
+            1.4rem
+        );
+    }
+
+
+    /* ============================= */
+    /* TABULEIRO                     */
+    /* ============================= */
+
+    .tabuleiro {
+        grid-column: 1;
+
+        grid-row: 4;
+
+        width: min(
+            100%,
+            44rem
+        );
+
+        justify-self: center;
+    }
+
+
+    /* ============================= */
+    /* NÚMEROS                       */
+    /* ============================= */
+
+    .numero {
+        font-size: clamp(
+            0.7rem,
+            2vw,
+            1rem
+        );
+    }
+
+
+    /* ============================= */
+    /* INPUTS                        */
+    /* ============================= */
+
+    .celula input {
+        font-size: clamp(
+            1rem,
+            3vw,
+            1.5rem
+        );
+    }
+
+}
+
+
+/* ========================================================= */
+/* ========================================================= */
+/*                                                           */
+/*                    CELULARES                             */
+/*                                                           */
+/* ========================================================= */
+/* ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+
+    .jogo {
+        width: 100%;
+
+        row-gap: 0.75rem;
+    }
+
+
+    /* ----------------------------- */
+    /* TÍTULO                         */
+    /* ----------------------------- */
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+
+    /* ----------------------------- */
+    /* DICAS                          */
+    /* ----------------------------- */
+
+    .dicas {
+        padding: 0.9rem;
+
+        border-radius: 0.5rem;
+    }
+
+
+    .dicas p {
+        font-size: 0.8rem;
+
+        line-height: 1.4;
+    }
+
+
+    /* ----------------------------- */
+    /* TABULEIRO                      */
+    /* ----------------------------- */
+
+    .tabuleiro {
+
+        /*
+         * Ocupa toda a largura disponível.
+         *
+         * Como usamos aspect-ratio,
+         * as células continuam quadradas.
+         */
+        width: 100%;
+
+        /*
+         * Evita que o tabuleiro
+         * fique colado nas bordas.
+         */
+        max-width: 100%;
+    }
+
+
+    /* ----------------------------- */
+    /* NÚMEROS                        */
+    /* ----------------------------- */
+
+    .numero {
+        top: 0.05rem;
+        left: 0.08rem;
+
+        font-size: 0.65rem;
+    }
+
+
+    /* ----------------------------- */
+    /* LETRAS                         */
+    /* ----------------------------- */
+
+    .celula input {
+        font-size: clamp(
+            0.9rem,
+            5vw,
+            1.4rem
+        );
+    }
+
+
+    /* ----------------------------- */
+    /* BOTÃO                          */
+    /* ----------------------------- */
+
+    #verificar {
+        width: 100%;
+
+        padding: 0.7rem 1rem;
+    }
+
 }

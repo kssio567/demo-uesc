@@ -1,105 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Palavras Cruzadas</title>
-
     <link rel="stylesheet" href="style.css">
+    <title>Palavras Cruzadas</title>
 </head>
 
 <body>
-
     <main class="jogo">
-
         <h1>Palavras Cruzadas</h1>
+        <p id="resultado" aria-live="polite"></p>
 
-
-        <!-- ============================== -->
-        <!-- DICAS                           -->
-        <!-- ============================== -->
-
+        <!-- Dicas -->
         <section class="dicas">
+            <p><strong>1.</strong> Alimento de origem animal, muito consumido em refeições.</p>
+            <p><strong>2.</strong> Vegetal comestível, amplamente utilizado em pratos diversos.</p>
+            <p><strong>3.</strong> Alimento básico, fundamental em muitas culinárias.</p>
+            <p><strong>4.</strong> Produto derivado do trigo, amplamente consumido como alimento principal.</p>
+            <p><strong>5.</strong> Fruto comestível, de cor vermelha ou verde, muito consumido fresco.</p>
+            <p><strong>6.</strong> Mistura de vegetais frescos, frequentemente servida crua.</p>
+            <p><strong>7.</strong> Alimento rico em proteínas, geralmente de galinha.</p>
+            <p><strong>8.</strong> Bebida branca e nutritiva, proveniente de vacas.</p>
 
-            <p>
-                <strong>1.</strong>
-                Alimento de origem animal, muito consumido em refeições.
-            </p>
 
-            <p>
-                <strong>2.</strong>
-                Vegetal comestível, amplamente utilizado em pratos diversos.
-            </p>
-
-            <p>
-                <strong>3.</strong>
-                Alimento básico, fundamental em muitas culinárias.
-            </p>
-
-            <p>
-                <strong>4.</strong>
-                Produto derivado do trigo, amplamente consumido como alimento principal.
-            </p>
-
-            <p>
-                <strong>5.</strong>
-                Fruto comestível, de cor vermelha ou verde, muito consumido fresco.
-            </p>
-
-            <p>
-                <strong>6.</strong>
-                Mistura de vegetais frescos, frequentemente servida crua.
-            </p>
-
-            <p>
-                <strong>7.</strong>
-                Alimento rico em proteínas, geralmente de galinha.
-            </p>
-
-            <p>
-                <strong>8.</strong>
-                Bebida branca e nutritiva, proveniente de vacas.
-            </p>
-
+            <div class="controles">
+                <button id="verificar" type="button">
+                    Conferir respostas
+                </button>
+            </div>
         </section>
 
+        <!-- Tabuleiro -->
+        <section class="tabuleiro" id="tabuleiro">
 
-        <!-- ============================== -->
-        <!-- TABULEIRO                       -->
-        <!-- ============================== -->
+            <!-- Carne -->
 
-        <section class="tabuleiro" id="tabuleiro" aria-label="Tabuleiro das palavras cruzadas">
-
-            <!-- ================================= -->
-            <!-- 1 - CARNE                         -->
-            <!-- ================================= -->
-
-            <!-- Linha 1 / Coluna 7 - C -->
+            <!-- Linha 1 / Coluna 7 C-->
             <div class="celula" style="grid-row: 1; grid-column: 7;">
                 <span class="numero">1</span>
-
-                <input type="text" maxlength="1" data-resposta="c" autocomplete="off" spellcheck="false"
-                    aria-label="Palavra 1, primeira letra">
+                <input type="text" maxlength="1" data-resposta="C" autocomplete="off" spellcheck="false"
+                    aria-label="Letra 1 da palavra 1">
             </div>
 
-
-            <!-- Linha 1 / Coluna 8 - A -->
+            <!-- Linha 1 / Coluna 8 A -->
             <div class="celula" style="grid-row: 1; grid-column: 8;">
                 <span class="numero">2</span>
-
-                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
-                    aria-label="Palavra 1, segunda letra">
+                <input type="text" maxlength="1" data-resposta="A" autocomplete="off" spellcheck="false"
+                    aria-label="Letra 2 da palavra 1">
             </div>
 
-
-            <!-- Linha 1 / Coluna 9 - R -->
+            <!-- Linha 1 / Coluna 9 R -->
             <div class="celula" style="grid-row: 1; grid-column: 9;">
-                <input type="text" maxlength="1" data-resposta="r" autocomplete="off" spellcheck="false"
-                    aria-label="Palavra 1, terceira letra">
+                <input type="text" maxlength="1" data-resposta="R" autocomplete="off" spellcheck="false"
+                    aria-label="Letra 3 da palavra 1">
             </div>
-
 
             <!-- Linha 1 / Coluna 10 - N -->
             <div class="celula" style="grid-row: 1; grid-column: 10;">
@@ -332,24 +288,7 @@
             </div>
 
         </section>
-
-
-        <!-- ============================== -->
-        <!-- CONTROLES                       -->
-        <!-- ============================== -->
-
-        <div class="controles">
-
-            <button id="verificar" type="button">
-                Conferir respostas
-            </button>
-
-            <p id="resultado" aria-live="polite"></p>
-
-        </div>
-
     </main>
-
 
     <script src="script.js"></script>
 
