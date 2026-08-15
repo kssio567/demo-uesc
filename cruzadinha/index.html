@@ -16,222 +16,340 @@
 
         <h1>Palavras Cruzadas</h1>
 
-        <div class="dicas">
-            <p><strong>1.</strong> Alimento de origem animal, muito consumido em refeições.</p>
-            <p><strong>2.</strong> Vegetal comestível, amplamente utilizado em pratos diversos.</p>
-            <p><strong>3.</strong> Alimento básico, fundamental em muitas culinárias.</p>
-            <p><strong>4.</strong> Produto derivado do trigo, amplamente consumido como alimento principal.</p>
-            <p><strong>5.</strong> Fruto comestível, de cor vermelha ou verde, muito consumido fresco.</p>
-            <p><strong>6.</strong> Mistura de vegetais frescos, frequentemente servida crua.</p>
-            <p><strong>7.</strong> Alimento rico em proteínas, geralmente de galinha.</p>
-            <p><strong>8.</strong> Bebida branca e nutritiva, proveniente
-        </div>
 
-        <div class="tabuleiro" id="tabuleiro">
+        <!-- ============================== -->
+        <!-- DICAS                           -->
+        <!-- ============================== -->
 
-            <!-- 1 - CARNE -->
+        <section class="dicas">
+
+            <p>
+                <strong>1.</strong>
+                Alimento de origem animal, muito consumido em refeições.
+            </p>
+
+            <p>
+                <strong>2.</strong>
+                Vegetal comestível, amplamente utilizado em pratos diversos.
+            </p>
+
+            <p>
+                <strong>3.</strong>
+                Alimento básico, fundamental em muitas culinárias.
+            </p>
+
+            <p>
+                <strong>4.</strong>
+                Produto derivado do trigo, amplamente consumido como alimento principal.
+            </p>
+
+            <p>
+                <strong>5.</strong>
+                Fruto comestível, de cor vermelha ou verde, muito consumido fresco.
+            </p>
+
+            <p>
+                <strong>6.</strong>
+                Mistura de vegetais frescos, frequentemente servida crua.
+            </p>
+
+            <p>
+                <strong>7.</strong>
+                Alimento rico em proteínas, geralmente de galinha.
+            </p>
+
+            <p>
+                <strong>8.</strong>
+                Bebida branca e nutritiva, proveniente de vacas.
+            </p>
+
+        </section>
+
+
+        <!-- ============================== -->
+        <!-- TABULEIRO                       -->
+        <!-- ============================== -->
+
+        <section class="tabuleiro" id="tabuleiro" aria-label="Tabuleiro das palavras cruzadas">
+
+            <!-- ================================= -->
+            <!-- 1 - CARNE                         -->
+            <!-- ================================= -->
+
+            <!-- Linha 1 / Coluna 7 - C -->
             <div class="celula" style="grid-row: 1; grid-column: 7;">
                 <span class="numero">1</span>
-                <input type="text" maxlength="1" data-palavras="1" data-resposta="c"
-                    aria-label="1 horizontal, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="c" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 1, primeira letra">
             </div>
 
+
+            <!-- Linha 1 / Coluna 8 - A -->
             <div class="celula" style="grid-row: 1; grid-column: 8;">
                 <span class="numero">2</span>
-                <input type="text" maxlength="1" data-palavras="1,2" data-resposta="a"
-                    aria-label="1 horizontal, segunda letra">
+
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 1, segunda letra">
             </div>
 
+
+            <!-- Linha 1 / Coluna 9 - R -->
             <div class="celula" style="grid-row: 1; grid-column: 9;">
-                <input type="text" maxlength="1" data-palavras="1" data-resposta="r"
-                    aria-label="1 horizontal, terceira letra">
+                <input type="text" maxlength="1" data-resposta="r" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 1, terceira letra">
             </div>
 
+
+            <!-- Linha 1 / Coluna 10 - N -->
             <div class="celula" style="grid-row: 1; grid-column: 10;">
-                <input type="text" maxlength="1" data-palavras="1" data-resposta="n"
-                    aria-label="1 horizontal, quarta letra">
+                <input type="text" maxlength="1" data-resposta="n" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 1, quarta letra">
             </div>
 
+
+            <!-- Linha 1 / Coluna 11 - E -->
             <div class="celula" style="grid-row: 1; grid-column: 11;">
-                <input type="text" maxlength="1" data-palavras="1" data-resposta="e"
-                    aria-label="1 horizontal, quinta letra">
+                <input type="text" maxlength="1" data-resposta="e" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 1, quinta letra">
             </div>
 
 
-            <!-- 3 - BATATA -->
+            <!-- ================================= -->
+            <!-- 3 - BATATA                        -->
+            <!-- ================================= -->
+
+            <!-- Linha 2 / Coluna 4 - B -->
             <div class="celula" style="grid-row: 2; grid-column: 4;">
                 <span class="numero">3</span>
-                <input type="text" maxlength="1" data-palavras="3" data-resposta="b"
-                    aria-label="3 vertical, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="b" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 3, primeira letra">
+            </div>
+            <div class="celula" style="grid-row: 4; grid-column: 4;">
+                <span class="numero"></span>
+
+                <input type="text" maxlength="1" data-resposta="t" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 3, terceira letra">
+            </div>
+            <div class="celula" style="grid-row: 5; grid-column: 4;">
+                <span class="numero"></span>
+
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 3, quarta letra">
             </div>
 
 
-            <!-- 4 - PÃO -->
+            <!-- ================================= -->
+            <!-- 4 - PÃO                           -->
+            <!-- ================================= -->
+
+            <!-- Linha 2 / Coluna 6 - P -->
             <div class="celula" style="grid-row: 2; grid-column: 6;">
                 <span class="numero">4</span>
-                <input type="text" maxlength="1" data-palavras="4" data-resposta="p"
-                    aria-label="4 vertical, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="p" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 4, primeira letra">
             </div>
 
 
-            <!-- ARROZ - segunda letra -->
+            <!-- Linha 2 / Coluna 8 - R -->
             <div class="celula" style="grid-row: 2; grid-column: 8;">
-                <input type="text" maxlength="1" data-palavras="2" data-resposta="r"
-                    aria-label="2 vertical, segunda letra">
+                <input type="text" maxlength="1" data-resposta="r" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 2, segunda letra">
             </div>
 
 
-            <!-- 5 - MAÇÃ -->
+            <!-- ================================= -->
+            <!-- 5 - MAÇÃ                          -->
+            <!-- ================================= -->
+
+            <!-- Linha 3 / Coluna 3 - M -->
             <div class="celula" style="grid-row: 3; grid-column: 3;">
                 <span class="numero">5</span>
-                <input type="text" maxlength="1" data-palavras="5" data-resposta="m"
-                    aria-label="5 horizontal, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="m" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 5, primeira letra">
             </div>
 
+
+            <!-- Linha 3 / Coluna 4 - A -->
             <div class="celula" style="grid-row: 3; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3,5" data-resposta="a"
-                    aria-label="5 horizontal, segunda letra">
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 3 e 5">
             </div>
 
+
+            <!-- Linha 3 / Coluna 5 - Ç -->
             <div class="celula" style="grid-row: 3; grid-column: 5;">
-                <input type="text" maxlength="1" data-palavras="5" data-resposta="ç"
-                    aria-label="5 horizontal, terceira letra">
+                <input type="text" maxlength="1" data-resposta="ç" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 5, terceira letra">
             </div>
 
+
+            <!-- Linha 3 / Coluna 6 - Ã -->
             <div class="celula" style="grid-row: 3; grid-column: 6;">
-                <input type="text" maxlength="1" data-palavras="4,5" data-resposta="ã"
-                    aria-label="5 horizontal, quarta letra">
+                <input type="text" maxlength="1" data-resposta="ã" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 4 e 5">
             </div>
 
 
-            <!-- ARROZ - terceira letra -->
+            <!-- Linha 3 / Coluna 8 - R -->
             <div class="celula" style="grid-row: 3; grid-column: 8;">
-                <input type="text" maxlength="1" data-palavras="2" data-resposta="r"
-                    aria-label="2 vertical, terceira letra">
+                <input type="text" maxlength="1" data-resposta="r" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 2, terceira letra">
             </div>
 
 
-            <!-- 6 - SALADA -->
+            <!-- ================================= -->
+            <!-- 6 - SALADA                        -->
+            <!-- ================================= -->
+
+            <!-- Linha 4 / Coluna 1 - S -->
             <div class="celula" style="grid-row: 4; grid-column: 1;">
                 <span class="numero">6</span>
-                <input type="text" maxlength="1" data-palavras="6" data-resposta="s"
-                    aria-label="6 vertical, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="s" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 6, primeira letra">
             </div>
 
 
-            <!-- 7 - OVO -->
+            <!-- ================================= -->
+            <!-- 7 - OVO                           -->
+            <!-- ================================= -->
+
+            <!-- Linha 4 / Coluna 6 - O -->
             <div class="celula" style="grid-row: 4; grid-column: 6;">
                 <span class="numero">7</span>
-                <input type="text" maxlength="1" data-palavras="4,7" data-resposta="o"
-                    aria-label="7 horizontal, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="o" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 4 e 7">
             </div>
 
+
+            <!-- Linha 4 / Coluna 7 - V -->
             <div class="celula" style="grid-row: 4; grid-column: 7;">
-                <input type="text" maxlength="1" data-palavras="7" data-resposta="v"
-                    aria-label="7 horizontal, segunda letra">
+                <input type="text" maxlength="1" data-resposta="v" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 7, segunda letra">
             </div>
 
+
+            <!-- Linha 4 / Coluna 8 - O -->
             <div class="celula" style="grid-row: 4; grid-column: 8;">
-                <input type="text" maxlength="1" data-palavras="2,7" data-resposta="o"
-                    aria-label="7 horizontal, terceira letra">
+                <input type="text" maxlength="1" data-resposta="o" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 2 e 7">
             </div>
 
 
-            <!-- SALADA -->
+            <!-- ================================= -->
+            <!-- SALADA / ARROZ                    -->
+            <!-- ================================= -->
+
+            <!-- Linha 5 / Coluna 1 - A -->
             <div class="celula" style="grid-row: 5; grid-column: 1;">
-                <input type="text" maxlength="1" data-palavras="6" data-resposta="a"
-                    aria-label="6 vertical, segunda letra">
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 6, segunda letra">
             </div>
 
-            <!-- ARROZ -->
+
+            <!-- Linha 5 / Coluna 8 - Z -->
             <div class="celula" style="grid-row: 5; grid-column: 8;">
-                <input type="text" maxlength="1" data-palavras="2" data-resposta="z"
-                    aria-label="2 vertical, quinta letra">
+                <input type="text" maxlength="1" data-resposta="z" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 2, quinta letra">
             </div>
 
 
-            <!-- LEITE -->
+            <!-- ================================= -->
+            <!-- 8 - LEITE                         -->
+            <!-- ================================= -->
+
+            <!-- Linha 6 / Coluna 1 - L -->
             <div class="celula" style="grid-row: 6; grid-column: 1;">
                 <span class="numero">8</span>
-                <input type="text" maxlength="1" data-palavras="6,8" data-resposta="l"
-                    aria-label="8 horizontal, primeira letra">
+
+                <input type="text" maxlength="1" data-resposta="l" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 6 e 8">
             </div>
 
+
+            <!-- Linha 6 / Coluna 2 - E -->
             <div class="celula" style="grid-row: 6; grid-column: 2;">
-                <input type="text" maxlength="1" data-palavras="8" data-resposta="e"
-                    aria-label="8 horizontal, segunda letra">
+                <input type="text" maxlength="1" data-resposta="e" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 8, segunda letra">
             </div>
 
+
+            <!-- Linha 6 / Coluna 3 - I -->
             <div class="celula" style="grid-row: 6; grid-column: 3;">
-                <input type="text" maxlength="1" data-palavras="8" data-resposta="i"
-                    aria-label="8 horizontal, terceira letra">
+                <input type="text" maxlength="1" data-resposta="i" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 8, terceira letra">
             </div>
 
+
+            <!-- Linha 6 / Coluna 4 - T -->
             <div class="celula" style="grid-row: 6; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3,8" data-resposta="t"
-                    aria-label="8 horizontal, quarta letra">
+                <input type="text" maxlength="1" data-resposta="t" autocomplete="off" spellcheck="false"
+                    aria-label="Cruzamento entre palavras 3 e 8">
             </div>
 
+
+            <!-- Linha 6 / Coluna 5 - E -->
             <div class="celula" style="grid-row: 6; grid-column: 5;">
-                <input type="text" maxlength="1" data-palavras="8" data-resposta="e"
-                    aria-label="8 horizontal, quinta letra">
+                <input type="text" maxlength="1" data-resposta="e" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 8, quinta letra">
             </div>
 
 
-            <!-- SALADA -->
-            <div class="celula" style="grid-row: 6; grid-column: 1;">
-                <input type="text" maxlength="1" data-palavras="6,8" data-resposta="l"
-                    aria-label="6 vertical, terceira letra">
-            </div>
+            <!-- ================================= -->
+            <!-- CONTINUAÇÃO SALADA                -->
+            <!-- ================================= -->
 
-            <!-- BATATA -->
-            <div class="celula" style="grid-row: 4; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3,7" data-resposta="t"
-                    aria-label="3 vertical, terceira letra">
-            </div>
-
-
-            <!-- SALADA -->
+            <!-- Linha 7 / Coluna 1 - A -->
             <div class="celula" style="grid-row: 7; grid-column: 1;">
-                <input type="text" maxlength="1" data-palavras="6" data-resposta="a"
-                    aria-label="6 vertical, quarta letra">
-            </div>
-
-            <!-- BATATA -->
-            <div class="celula" style="grid-row: 5; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3" data-resposta="a"
-                    aria-label="3 vertical, quarta letra">
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 6, quarta letra">
             </div>
 
 
-            <!-- SALADA -->
-            <div class="celula" style="grid-row: 8; grid-column: 1;">
-                <input type="text" maxlength="1" data-palavras="6" data-resposta="d"
-                    aria-label="6 vertical, quinta letra">
-            </div>
-
-            <!-- BATATA -->
-            <div class="celula" style="grid-row: 6; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3,8" data-resposta="t"
-                    aria-label="3 vertical, quinta letra">
-            </div>
-
-
-            <!-- SALADA -->
-            <div class="celula" style="grid-row: 9; grid-column: 1;">
-                <input type="text" maxlength="1" data-palavras="6" data-resposta="a"
-                    aria-label="6 vertical, sexta letra">
-            </div>
-
-            <!-- BATATA -->
+            <!-- Linha 7 / Coluna 4 - A -->
             <div class="celula" style="grid-row: 7; grid-column: 4;">
-                <input type="text" maxlength="1" data-palavras="3" data-resposta="a"
-                    aria-label="3 vertical, sexta letra">
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 3, sexta letra">
             </div>
+
+
+            <!-- Linha 8 / Coluna 1 - D -->
+            <div class="celula" style="grid-row: 8; grid-column: 1;">
+                <input type="text" maxlength="1" data-resposta="d" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 6, quinta letra">
+            </div>
+
+
+            <!-- Linha 9 / Coluna 1 - A -->
+            <div class="celula" style="grid-row: 9; grid-column: 1;">
+                <input type="text" maxlength="1" data-resposta="a" autocomplete="off" spellcheck="false"
+                    aria-label="Palavra 6, sexta letra">
+            </div>
+
+        </section>
+
+
+        <!-- ============================== -->
+        <!-- CONTROLES                       -->
+        <!-- ============================== -->
+
+        <div class="controles">
+
+            <button id="verificar" type="button">
+                Conferir respostas
+            </button>
+
+            <p id="resultado" aria-live="polite"></p>
 
         </div>
 
     </main>
+
 
     <script src="script.js"></script>
 

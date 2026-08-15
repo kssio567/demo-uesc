@@ -2,75 +2,154 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
+
     min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background: #ffffff;
+    background: linear-gradient(
+        135deg,
+        #666fda 0%,
+        #7452a8 100%
+    );
 
     font-family: Arial, sans-serif;
 }
 
+
+/* ================================= */
+/* ESTRUTURA DO JOGO                 */
+/* ================================= */
+
 .jogo {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: auto auto auto;
-    align-items: start;
-    gap: 24px;
 
-    max-width: 1000px;
+    grid-template-columns: 300px 682px;
+    grid-template-rows: auto auto auto;
+
+    align-items: start;
+
+    column-gap: 40px;
+    row-gap: 24px;
+
+    max-width: 1100px;
 }
+
+
+/* ================================= */
+/* TÍTULO                            */
+/* ================================= */
 
 h1 {
     margin: 0;
+
     grid-column: 1 / -1;
+
     text-align: center;
 
     font-size: 28px;
-    color: #1f2937;
+
+    color: #172033;
 }
 
+
+/* ================================= */
+/* DICAS                             */
+/* ================================= */
+
+.dicas {
+    grid-column: 1;
+    grid-row: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 18px 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+.dicas p {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+
+    color: #374151;
+}
+
+
+.dicas strong {
+    color: #111827;
+}
+
+
+/* ================================= */
+/* TABULEIRO                         */
+/* ================================= */
+
 .tabuleiro {
-    display: grid;
     grid-column: 2;
     grid-row: 2;
 
-    grid-template-columns: repeat(11, 70px);
-    grid-template-rows: repeat(9, 70px);
+    display: grid;
+
+    grid-template-columns: repeat(11, 62px);
+    grid-template-rows: repeat(9, 62px);
 
     gap: 1px;
 }
 
-/*
-    Cada casa real da cruzadinha.
-*/
+
+/* ================================= */
+/* CÉLULA                            */
+/* ================================= */
+
 .celula {
     position: relative;
 
-    width: 70px;
-    height: 70px;
+    width: 62px;
+    height: 62px;
 
     background: #ffffff;
 
-    border: 1px solid #555;
+    border: 1px solid #555555;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
 }
 
-/*
-    Número da questão.
-*/
+
+/* ================================= */
+/* NÚMERO DA PALAVRA                 */
+/* ================================= */
+
 .numero {
     position: absolute;
 
-    top: 4px;
-    left: 6px;
+    top: 3px;
+    left: 5px;
 
     z-index: 2;
 
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
 
     color: #111827;
@@ -78,76 +157,156 @@ h1 {
     pointer-events: none;
 }
 
-/*
-    Campo onde o jogador digita.
-*/
+
+/* ================================= */
+/* INPUT                             */
+/* ================================= */
+
 .celula input {
     width: 100%;
     height: 100%;
 
-    padding: 12px 4px 2px;
+    padding: 10px 3px 0;
 
-    border: 0;
+    border: none;
     outline: none;
 
     background: transparent;
 
     text-align: center;
 
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 500;
 
     text-transform: uppercase;
 
     color: #1f2937;
+
+    caret-color: #2563eb;
 }
 
-/*
-    Destaque quando a casa está selecionada.
-*/
+
+/* ================================= */
+/* FOCO                              */
+/* ================================= */
+
 .celula:focus-within {
     background: #dbeafe;
+
     border-color: #2563eb;
 }
 
-/*
-    Quando o usuário passa o mouse.
-*/
+
 .celula:hover {
-    background: #f1f5f9;
+    background: #f8fafc;
 }
+
 
 .celula:focus-within:hover {
     background: #dbeafe;
 }
 
-button {
-    display: none;
+
+/* ================================= */
+/* CONTROLES                         */
+/* ================================= */
+
+.controles {
+    grid-column: 2;
+    grid-row: 3;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 55px;
 }
 
+
+/* ================================= */
+/* BOTÃO                             */
+/* ================================= */
+
+#verificar {
+    display: none;
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+
+#verificar.visivel {
+    display: block;
+}
+
+
+#verificar:hover {
+    background: #1d4ed8;
+}
+
+
+#verificar:active {
+    transform: scale(0.98);
+}
+
+
+/* ================================= */
+/* RESULTADO                         */
+/* ================================= */
+
+#resultado {
+    margin: 0;
+
+    min-height: 24px;
+
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.resultado--sucesso {
+    color: #166534;
+}
+
+
+.resultado--erro {
+    color: #991b1b;
+}
+
+
+/* ================================= */
+/* CORES APÓS CONFERÊNCIA            */
+/* ================================= */
 
 .celula input.correta {
     color: #15803d;
+
+    font-weight: 700;
 }
+
 
 .celula input.incorreta {
     color: #dc2626;
-}
 
-.dicas{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    grid-column: 1;
-    grid-row: 2;
-    
-    padding-right: 20px;
-    border-right: 2px solid #e5e7eb;
-}
-
-.dicas p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #374151;
+    font-weight: 700;
 }

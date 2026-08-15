@@ -2,174 +2,291 @@ const inputs = Array.from(
     document.querySelectorAll('.celula input')
 );
 
-const botaoVerificar = document.getElementById('verificar');
-const resultado = document.getElementById('resultado');
+
+const botaoVerificar =
+    document.getElementById('verificar');
 
 
-function normalizarLetra(letra) {
-    return letra
+const resultado =
+    document.getElementById('resultado');
+
+
+/*
+ * ============================================
+ * NORMALIZAR TEXTO
+ * ============================================
+ *
+ * Permite considerar equivalentes:
+ *
+ * ã = a
+ * á = a
+ * â = a
+ * ç = c
+ *
+ * A normalização é utilizada SOMENTE
+ * no momento da conferência.
+ */
+function normalizarTexto(texto) {
+
+    return texto
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
+
 }
 
 
-function obterCelulasJogaveis() {
-    return inputs;
+/*
+ * ============================================
+ * VERIFICAR SE TUDO ESTÁ PREENCHIDO
+ * ============================================
+ */
+function todosOsInputsPreenchidos() {
+
+    return inputs.every(
+        (input) =>
+            input.value.trim() !== ''
+    );
+
 }
 
 
-function focarProximaCelula(inputAtual) {
-    const celulas = obterCelulasJogaveis();
+/*
+ * ============================================
+ * MOSTRAR / ESCONDER BOTÃO
+ * ============================================
+ */
+function atualizarBotaoVerificar() {
 
-    const indiceAtual = celulas.indexOf(inputAtual);
+    const tudoPreenchido =
+        todosOsInputsPreenchidos();
 
-    if (indiceAtual === -1) {
-        return;
-    }
 
-    const proxima = celulas[indiceAtual + 1];
+    botaoVerificar.classList.toggle(
+        'visivel',
+        tudoPreenchido
+    );
 
-    if (proxima) {
-        proxima.focus();
-    }
 }
 
 
-function focarCelulaAnterior(inputAtual) {
-    const celulas = obterCelulasJogaveis();
-
-    const indiceAtual = celulas.indexOf(inputAtual);
-
-    if (indiceAtual <= 0) {
-        return;
-    }
-
-    celulas[indiceAtual - 1].focus();
-}
-
-
+/*
+ * ============================================
+ * ENTRADA DE LETRAS
+ * ============================================
+ *
+ * Não existe validação aqui.
+ */
 inputs.forEach((input) => {
 
-    input.addEventListener('input', (evento) => {
+    input.addEventListener(
+        'input',
+        (evento) => {
 
-        let valor = evento.target.value;
+            let valor =
+                evento.target.value;
 
-        if (!valor) {
-            return;
+
+            /*
+             * Campo vazio.
+             */
+            if (!valor) {
+
+                atualizarBotaoVerificar();
+
+                return;
+            }
+
+
+            /*
+             * Mantém somente o primeiro
+             * caractere digitado/colado.
+             */
+            valor =
+                Array.from(valor)[0];
+
+
+            /*
+             * Exibe a letra em maiúsculo.
+             */
+            evento.target.value =
+                valor.toUpperCase();
+
+
+            /*
+             * Apenas verifica se
+             * todos os campos estão preenchidos.
+             *
+             * Não verifica resposta.
+             */
+            atualizarBotaoVerificar();
+
         }
+    );
 
-        /*
-         * Caso o usuário cole mais de uma letra,
-         * mantemos somente a primeira.
-         */
-        valor = valor.charAt(0);
-
-        evento.target.value = valor.toUpperCase();
-
-        focarProximaCelula(evento.target);
-    });
+});
 
 
-    input.addEventListener('keydown', (evento) => {
+/*
+ * ============================================
+ * BACKSPACE / DELETE
+ * ============================================
+ */
+inputs.forEach((input) => {
 
-        /*
-         * Backspace:
-         *
-         * Se a célula já estiver preenchida,
-         * apaga primeiro.
-         *
-         * Se estiver vazia, volta para a anterior.
-         */
-        if (evento.key === 'Backspace') {
+    input.addEventListener(
+        'keydown',
+        (evento) => {
 
-            if (evento.target.value) {
+            if (
+                evento.key === 'Backspace' ||
+                evento.key === 'Delete'
+            ) {
 
-                evento.target.value = '';
+                evento.preventDefault();
 
-            } else {
+                input.value = '';
 
-                focarCelulaAnterior(evento.target);
+                atualizarBotaoVerificar();
 
             }
 
-            return;
         }
-
-
-        /*
-         * Permite apagar com Delete.
-         */
-        if (evento.key === 'Delete') {
-            evento.target.value = '';
-            return;
-        }
-    });
+    );
 
 });
 
 
-function verificarRespostas() {
+/*
+ * ============================================
+ * SELECIONAR LETRA AO FOCAR
+ * ============================================
+ *
+ * Permite:
+ *
+ * A
+ * ↓
+ * usuário clica no campo
+ * ↓
+ * digita B
+ * ↓
+ * fica B
+ *
+ * sem precisar apagar A manualmente.
+ */
+inputs.forEach((input) => {
 
-    let acertos = 0;
-    let preenchidas = 0;
+    input.addEventListener(
+        'focus',
+        () => {
+
+            input.select();
+
+        }
+    );
+
+});
+
+
+/*
+ * ============================================
+ * CONFERIR RESPOSTAS
+ * ============================================
+ *
+ * A validação só acontece quando
+ * o usuário aperta o botão.
+ */
+function conferirRespostas() {
+
+    let quantidadeErros = 0;
+
 
     inputs.forEach((input) => {
 
-        const resposta = input.dataset.resposta;
-        const tentativa = input.value;
+        const resposta =
+            normalizarTexto(
+                input.dataset.resposta
+            );
 
-        if (!tentativa) {
-            return;
+
+        const tentativa =
+            normalizarTexto(
+                input.value
+            );
+
+
+        const correta =
+            resposta === tentativa;
+
+
+        /*
+         * Só agora mostramos ao usuário
+         * se a célula está correta ou não.
+         */
+        input.classList.toggle(
+            'correta',
+            correta
+        );
+
+
+        input.classList.toggle(
+            'incorreta',
+            !correta
+        );
+
+
+        if (!correta) {
+            quantidadeErros += 1;
         }
 
-        preenchidas++;
-
-        const respostaNormalizada =
-            normalizarLetra(resposta);
-
-        const tentativaNormalizada =
-            normalizarLetra(tentativa);
-
-        if (respostaNormalizada === tentativaNormalizada) {
-
-            input.classList.add('correta');
-            input.classList.remove('incorreta');
-
-            acertos++;
-
-        } else {
-
-            input.classList.add('incorreta');
-            input.classList.remove('correta');
-        }
     });
 
 
-    if (preenchidas === 0) {
+    /*
+     * TUDO CORRETO
+     */
+    if (quantidadeErros === 0) {
 
         resultado.textContent =
-            'Preencha algumas letras primeiro.';
+            '🎉 Parabéns! Você completou a cruzadinha!';
+
+
+        resultado.className =
+            'resultado--sucesso';
+
 
         return;
     }
 
 
-    if (acertos === inputs.length) {
-
-        resultado.textContent =
-            '🎉 Parabéns! Cruzadinha concluída!';
-
-        return;
-    }
-
-
+    /*
+     * EXISTEM ERROS
+     */
     resultado.textContent =
-        `${acertos} de ${inputs.length} letras corretas.`;
+        `Ainda existem ${quantidadeErros} resposta(s) incorreta(s).`;
+
+
+    resultado.className =
+        'resultado--erro';
+
 }
 
 
-// Verificar automaticamente a cada input
-inputs.forEach((input) => {
-    input.addEventListener('input', verificarRespostas);
-});
+/*
+ * ============================================
+ * BOTÃO
+ * ============================================
+ */
+botaoVerificar.addEventListener(
+    'click',
+    conferirRespostas
+);
+
+
+/*
+ * ============================================
+ * ESTADO INICIAL
+ * ============================================
+ */
+atualizarBotaoVerificar();
